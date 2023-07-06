@@ -21,9 +21,15 @@ def computing(msg):
             result = first_number * second_number
         elif sign == "/":
             result = first_number / second_number
+        elif sign == "^":
+            result = first_number ** second_number
         else:
             bot.send_message(msg.chat.id, "Я не знаю такой знак, жми на кнопку Калькулятор", reply_markup=startKeyboard)
             return
-        bot.send_message(msg.chat.id, f"Результат вычисления: <b>{result}</b>", reply_markup=startKeyboard, parse_mode="HTML")
+        try:
+            bot.send_message(msg.chat.id, f"Результат вычисления: <b>{result}</b>", reply_markup=startKeyboard, parse_mode="HTML")
+        except ValueError:
+            bot.send_message(msg.chat.id, "Слишком большое число получается, бери меньше",
+                             reply_markup=startKeyboard)
     except ZeroDivisionError:
         bot.send_message(msg.chat.id, "Нельзя так, деление на ноль запрещено, жми на кнопку Калькулятор", reply_markup=startKeyboard)
