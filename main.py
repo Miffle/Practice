@@ -5,11 +5,13 @@ from bot_components.bot_register import bot
 from bot_components.keyboard.StartKeyboard import startKeyboard
 import calc.main
 from bot_components.keyboard.ButtonsText import *
+import bot_components.reply
 
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    bot.send_message(message.chat.id, "Привет", reply_markup=startKeyboard)
+    reply_text = "Привет"
+    bot_components.reply.reply(message, reply_text, "/start")
 
 
 @bot.message_handler(content_types=['text'])
@@ -27,6 +29,8 @@ def start_keyboard_answer(message):
     elif text == memeBtnText:
         memes.main.meme_sending(message)
     else:
-        bot.send_message(message.chat.id, "Я не знаю такую команду, нажимай на кнопки снизу", reply_markup=startKeyboard)
+        bot.send_message(message.chat.id, "Я не знаю такую команду, нажимай на кнопки снизу",
+                         reply_markup=startKeyboard)
+
 
 bot.infinity_polling()
