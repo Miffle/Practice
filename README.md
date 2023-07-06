@@ -1,11 +1,6 @@
 # Телеграм бот
 ## Команда №9
 
-<style hidden="hidden">
-   .operations>li{list-style-type: circle;}
-   .functions>li{list-style-type: decimal;}
-    .start_working>li{margin-top: 20px}
-</style>
 ---------
 ## Описание работы
 
@@ -19,20 +14,20 @@
 ### Описание функций
 
 <ul class="functions">
-<li>Калькулятор</li>
+<li style="list-style-type: decimal;">Калькулятор</li>
    Операции, которые могут быть выполнены
    <ul class="operations">
-   <li>сложение (+)</li>
-   <li>вычитание (-)</li>
-   <li>умножение (*)</li>
-   <li>деление (/)</li>
-   <li>возведение в степень (^)</li>
+   <li style="list-style-type: circle;">сложение (+)</li>
+   <li style="list-style-type: circle;">вычитание (-)</li>
+   <li style="list-style-type: circle;">умножение (*)</li>
+   <li style="list-style-type: circle;">деление (/)</li>
+   <li style="list-style-type: circle;">возведение в степень (^)</li>
    </ul>
-<li>Просмотр погоды</li>
+<li style="list-style-type: decimal;">Просмотр погоды</li>
    Используется сайт OpenWeatherMap и библиотека request
-<li>Перевод текста</li>
+<li style="list-style-type: decimal;">Перевод текста</li>
     Перевод текста осуществляется с помощью библиотеки googletrans. Язык, с которого переводится - любой, выходной язык - английский.
-<li>Мем дня</li>
+<li style="list-style-type: decimal;">Мем дня</li>
     Самая интересная часть проекта. Библиотеки для поиска случайных мемов найти сложно, так что в качестве источника был взят Reddit. Используется библиотека PRAW и <a href="https://www.reddit.com/r/ProgrammerHumor/">r/ProgrammerHumor</a>
 </ul>
 
@@ -43,10 +38,10 @@
 <ul class="start_working">
 <li><b>Скачивание</b></li>
     <code>git clone https://github.com/Miffle/Practice.git</code>
-<li><b>Установка библиотек</b></li>
+<li style="margin-top: 20px"><b>Установка библиотек</b></li>
     <code>pip install -r requirements.txt</code>
-<li><b>Создание файла INFO.py</b></li>
+<li style="margin-top: 20px"><b>Создание файла INFO.py</b></li>
    Файл хранится в папке "bot_components" и содержит такой код: <br> `TOKEN = "Тут ваш токен"`
-<li><b>Запуск бота</b></li>
+<li style="margin-top: 20px"><b>Запуск бота</b></li>
     <code>python main.py</code>
 </ul>
