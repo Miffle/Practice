@@ -1,3 +1,5 @@
+import memes.main
+import translation.main
 import weather.main
 from bot_components.bot_register import bot
 from bot_components.keyboard.StartKeyboard import startKeyboard
@@ -19,6 +21,12 @@ def start_keyboard_answer(message):
     elif text == weatherBtnText:
         msg = bot.send_message(message.chat.id, "Введи название города")
         bot.register_next_step_handler(msg, weather.main.weather_searching)
-
+    elif text == translateBtnText:
+        msg = bot.send_message(message.chat.id, "Какую фразу перевести на <b>английский</b>?", parse_mode="HTML")
+        bot.register_next_step_handler(msg, translation.main.translating)
+    elif text == memeBtnText:
+        memes.main.meme_sending(message)
+    else:
+        bot.send_message(message.chat.id, "Я не знаю такую команду, нажимай на кнопки снизу", reply_markup=startKeyboard)
 
 bot.infinity_polling()
