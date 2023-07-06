@@ -1,5 +1,5 @@
-from bot.bot_register import bot
-from bot.keyboard.StartKeyboard import startKeyboard
+from bot_components.bot_register import bot
+from bot_components.keyboard.StartKeyboard import startKeyboard
 
 
 def computing(msg):
@@ -24,6 +24,6 @@ def computing(msg):
         else:
             bot.send_message(msg.chat.id, "Я не знаю такой знак, жми на кнопку Калькулятор", reply_markup=startKeyboard)
             return
-        bot.send_message(msg.chat.id, f"Результат вычисления - {result}", reply_markup=startKeyboard)
+        bot.send_message(msg.chat.id, f"Результат вычисления: <b>{result}</b>", reply_markup=startKeyboard, parse_mode="HTML")
     except ZeroDivisionError:
         bot.send_message(msg.chat.id, "Нельзя так, деление на ноль запрещено, жми на кнопку Калькулятор", reply_markup=startKeyboard)
