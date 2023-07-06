@@ -1,7 +1,7 @@
 # Телеграм бот
 ## Команда №9
 
-<style>
+<style hidden="hidden">
    .operations>li{list-style-type: circle;}
    .functions>li{list-style-type: decimal;}
     .start_working>li{margin-top: 20px}
