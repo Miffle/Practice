@@ -1,12 +1,7 @@
-import praw
+from memes.REDDIT_INFO import reddit
 from bot_components.bot_register import bot
 from bot_components.keyboard.StartKeyboard import startKeyboard
 import DBase.commands_insert
-
-reddit = praw.Reddit(
-    user_agent="Hihi",
-    client_id='Pi8sYLlg4Dtkb8_3sBS6Rw',
-    client_secret='w5-uhDOFkujbYcWC6dpj5oQodCor6g')
 
 
 def meme_getting():
