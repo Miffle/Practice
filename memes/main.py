@@ -4,9 +4,9 @@ from bot_components.keyboard.StartKeyboard import startKeyboard
 import DBase.commands_insert
 
 reddit = praw.Reddit(
-    user_agent="zalupa",
-    client_id='zD7n3UGqEBpZ5qbJ4gtrvA',
-    client_secret='ofyOJW9WJfOdmEjKI6MzTHGsEyi5YQ')
+    user_agent="Hihi",
+    client_id='Pi8sYLlg4Dtkb8_3sBS6Rw',
+    client_secret='w5-uhDOFkujbYcWC6dpj5oQodCor6g')
 
 
 def meme_getting():
