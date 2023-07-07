@@ -1,7 +1,7 @@
 import memes.main
 import translation.main
 import weather.main
-from bot_components.bot_register import bot
+from bot_components.tg_bot_register import bot
 from bot_components.keyboard.StartKeyboard import startKeyboard
 import calc.main
 from bot_components.keyboard.ButtonsText import *

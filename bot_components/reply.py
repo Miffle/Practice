@@ -1,4 +1,4 @@
-from bot_components.bot_register import bot
+from bot_components.tg_bot_register import bot
 from bot_components.keyboard.StartKeyboard import startKeyboard
 import DBase.commands_insert
 

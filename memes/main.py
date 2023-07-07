@@ -1,5 +1,5 @@
 from memes.REDDIT_INFO import reddit
-from bot_components.bot_register import bot
+from bot_components.tg_bot_register import bot
 from bot_components.keyboard.StartKeyboard import startKeyboard
 import DBase.commands_insert
 
@@ -10,11 +10,15 @@ def meme_getting():
     for submission in meme:
         url = submission.url
         if url.endswith("jpg") or url.endswith("png") or url.endswith("jpeg"):
-            return {"url": url,
-                    "type": "photo"}
+            return {
+                "url": url,
+                "type": "photo"
+            }
         elif url.endswith("gif"):
-            return {"url": url,
-                    "type": "gif"}
+            return {
+                "url": url,
+                "type": "gif"
+            }
 
 
 def meme_sending(message):
@@ -22,6 +26,6 @@ def meme_sending(message):
     if meme['type'] == "photo":
         bot.send_photo(message.chat.id, photo=meme["url"], caption="Мем дня", reply_markup=startKeyboard)
     else:
-        bot.send_animation(message.chat.id, photo=meme["url"], caption="Мем дня", reply_markup=startKeyboard)
+        bot.send_animation(message.chat.id, animation=meme["url"], caption="Мем дня", reply_markup=startKeyboard)
     DBase.commands_insert.command_inserting(message, "Какой-то мем", meme["url"])
    
