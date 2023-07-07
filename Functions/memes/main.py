@@ -1,4 +1,4 @@
-from memes.REDDIT_INFO import reddit
+from Functions.memes.REDDIT_INFO import reddit
 from bot_components.tg_bot_register import bot
 from bot_components.keyboard.StartKeyboard import startKeyboard
 import DBase.commands_insert
