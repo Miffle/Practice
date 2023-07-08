@@ -2,11 +2,10 @@ import Functions.memes.main
 import Functions.translation.main
 import Functions.weather.main
 from bot_components.tg_bot_register import bot
-from bot_components.keyboard.StartKeyboard import startKeyboard
+from bot_components.keyboard.StartKeyboard import startKeyboard,keyboard
 import Functions.calc.main
 from bot_components.keyboard.ButtonsText import *
 import bot_components.reply
-
 
 @bot.message_handler(commands=["start"])
 def start(message):
@@ -18,7 +17,7 @@ def start(message):
 def start_keyboard_answer(message):
     text = message.text
     if text == calcBtnText:
-        msg = bot.send_message(message.chat.id, "Введи пример в формате - {1} {знак} {2}")
+        msg = bot.send_message(message.chat.id, '_',reply_markup=keyboard)
         bot.register_next_step_handler(msg, Functions.calc.main.computing)
     elif text == weatherBtnText:
         msg = bot.send_message(message.chat.id, "Введи название города")

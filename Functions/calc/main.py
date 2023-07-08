@@ -1,52 +1,46 @@
-import bot_components.reply
+
+from bot_components.tg_bot_register import bot
+from bot_components.keyboard.StartKeyboard import keyboard
 
 
-# TODO Переделать калькулятор
+value =''
+old_value=''
 
-def spliting(msg):
-    splited_message = msg.text.split(" ")
-    try:
-        first_number = int(splited_message[0])
-        second_number = int(splited_message[2])
-    except ValueError:
-        reply_text = "Ожидались цифорки, жми на кнопку Калькулятор"
-        bot_components.reply.reply(msg, reply_text, "Калькулятор")
-        return
-    sign = splited_message[1]
-    if len(splited_message) == 3:
-        return first_number, second_number, sign
+
+def getMessage(message):
+    global value
+    if value == '':
+        bot.send_message(message.from_user.id, '0', reply_markup=keyboard)
     else:
-        return
+        bot.send_message(message.from_user.id, value, reply_markup=keyboard)
 
+@bot.callback_query_handler(func=lambda call:True)
+def computing(query):
+    global  value,old_value
+    data = query.data
 
-def computing(msg):
-    command = "Калькулятор"
-    try:
-        first_number, second_number, sign = spliting(msg)
-    except TypeError:
-        reply_text = "Ожидались цифорки, жми на кнопку Калькулятор"
-        bot_components.reply.reply(msg, reply_text, command)
-        return
-    try:
-        match sign:
-            case "+":
-                result = first_number + second_number
-            case "-":
-                result = first_number - second_number
-            case "*":
-                result = first_number * second_number
-            case "/":
-                result = first_number / second_number
-            case "^":
-                result = first_number ** second_number
-            case _:
-                reply_text = "Я не знаю такой знак, жми на кнопку Калькулятор"
-                bot_components.reply.reply(msg, reply_text, command)
-                return
+    if data == 'no':
+        pass
+    elif data == 'C':
+        value=''
+    elif data == '<=':
+        if value !='':
+            value = value[:len(value) - 1]
+    elif data == '=':
         try:
-            reply_text = f"Результат вычисления: <b>{result}</b>"
-        except ValueError:
-            reply_text = "Слишком большое число получается, бери меньше"
-    except ZeroDivisionError:
-        reply_text = "Нельзя так, деление на ноль запрещено, жми на кнопку Калькулятор"
-    bot_components.reply.reply(msg, reply_text, command)
+            value = str(eval(value))
+        except:
+            value='Ошибка!'
+    else:
+        value+=data
+    if (value != old_value and value!='') or (value != old_value and value ==''):
+        if value =='':
+            bot.edit_message_text(chat_id=query.message.chat.id, message_id=query.message.message_id,text='0',reply_markup=keyboard)
+            old_value='0'
+        else:
+            bot.edit_message_text(chat_id=query.message.chat.id, message_id=query.message.message_id,text=value,reply_markup=keyboard)
+            old_value=value
+    old_value=value
+    if value == 'Ошибка!': value = ''
+
+
