@@ -7,14 +7,18 @@ import Functions.calc.main
 from bot_components.keyboard.ButtonsText import *
 import bot_components.reply
 
+
+
 @bot.message_handler(commands=["start"])
 def start(message):
     reply_text = "Привет я недоБОТ"
-    bot.reply_to("Выберите действие используя клавиатуру:", reply_markup=startKeyboard)
     bot_components.reply.reply(message, reply_text, "/start")
+    bot.reply_to(message,"Выберите действие используя клавиатуру:", reply_markup=startKeyboard)
 
-
-
+info_text="Я недоБОТ\n" \
+    "Созданный @I_am_still_right_here и @brizzy_9\n"\
+        "Могу посчитать на калькуляторе\nСообщить погоду в выбранном населенном пункте\n"\
+    "Перевести предложение на английский язык\nПоказать мем дня для IT\n"
 
 
 @bot.message_handler(content_types=['text'])
@@ -31,6 +35,8 @@ def start_keyboard_answer(message):
         bot.register_next_step_handler(msg, Functions.translation.main.translating)
     elif text == memeBtnText:
         Functions.memes.main.meme_sending(message)
+    elif text == infoBtnText:
+        bot.send_message(message.chat.id, info_text, reply_markup=startKeyboard)
     else:
         bot.send_message(message.chat.id, "Я не знаю такую команду, нажимай на кнопки снизу", reply_markup=startKeyboard)
 
