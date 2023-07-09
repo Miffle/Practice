@@ -2,15 +2,19 @@ import Functions.memes.main
 import Functions.translation.main
 import Functions.weather.main
 from bot_components.tg_bot_register import bot
-from bot_components.keyboard.StartKeyboard import startKeyboard,keyboard
+from bot_components.keyboard.StartKeyboard import startKeyboard,newKeyboard,keyboard
 import Functions.calc.main
 from bot_components.keyboard.ButtonsText import *
 import bot_components.reply
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    reply_text = "Привет"
+    reply_text = "Привет я недоБОТ"
+    bot.reply_to("Выберите действие используя клавиатуру:", reply_markup=startKeyboard)
     bot_components.reply.reply(message, reply_text, "/start")
+
+
+
 
 
 @bot.message_handler(content_types=['text'])
@@ -28,8 +32,7 @@ def start_keyboard_answer(message):
     elif text == memeBtnText:
         Functions.memes.main.meme_sending(message)
     else:
-        bot.send_message(message.chat.id, "Я не знаю такую команду, нажимай на кнопки снизу",
-                         reply_markup=startKeyboard)
+        bot.send_message(message.chat.id, "Я не знаю такую команду, нажимай на кнопки снизу", reply_markup=startKeyboard)
 
 
 bot.infinity_polling()
