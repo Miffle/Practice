@@ -1,13 +1,18 @@
 from telebot import types
 from bot_components.keyboard.ButtonsText import *
-startKeyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+startKeyboard = types.ReplyKeyboardMarkup(row_width=2,resize_keyboard=True)
+newKeyboard=types.ReplyKeyboardMarkup(row_width=2,resize_keyboard=True)
+
+
 
 calcBtn = types.KeyboardButton(text=calcBtnText)
 weatherBtn = types.KeyboardButton(text=weatherBtnText)
 translateBtn = types.KeyboardButton(text=translateBtnText)
 memeBtn = types.KeyboardButton(text=memeBtnText)
+backwardsBtn = types.KeyboardButton(text=backwardsBtnText)
 
 startKeyboard.add(calcBtn, weatherBtn, translateBtn, memeBtn)
+newKeyboard.add(backwardsBtn)
 
 keyboard = types.InlineKeyboardMarkup()
 keyboard.row(types.InlineKeyboardButton(' ', callback_data='no'),
