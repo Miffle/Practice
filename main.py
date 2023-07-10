@@ -11,18 +11,14 @@ import bot_components.reply
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    reply_text = "Привет я недоБОТ"
+    reply_text = "Привет я недоБОТ\nВыберите действие используя клавиатуру:"
     bot_components.reply.reply(message, reply_text, "/start")
-    bot.reply_to(message,"Выберите действие используя клавиатуру:", reply_markup=startKeyboard)
+    bot.reply_to(message,"INFO", reply_markup=startKeyboard)
 
-info_text="Я недоБОТ\n" \
-    "Созданный @I_am_still_right_here и @brizzy_9\n"\
-        "Могу посчитать на калькуляторе\nСообщить погоду в выбранном населенном пункте\n"\
-    "Перевести предложение на английский язык\nПоказать мем дня для IT\n"
 
 
 @bot.message_handler(content_types=['text'])
-def start_keyboard_answer(message):
+def menu(message):
     text = message.text
     if text == calcBtnText:
         msg = bot.send_message(message.chat.id, '_',reply_markup=keyboard)
@@ -39,6 +35,7 @@ def start_keyboard_answer(message):
         bot.send_message(message.chat.id, info_text, reply_markup=startKeyboard)
     else:
         bot.send_message(message.chat.id, "Я не знаю такую команду, нажимай на кнопки снизу", reply_markup=startKeyboard)
+
 
 
 bot.infinity_polling()
