@@ -22,7 +22,7 @@ def computing(query):
     if data == 'no':
         pass
     elif data == 'C':
-        value=''
+        value = ''
     elif data == '<=':
         if value !='':
             value = value[:len(value) - 1]
@@ -30,7 +30,9 @@ def computing(query):
         try:
             value = str(eval(value))
         except:
-            value='Ошибка!'
+            value = 'Ошибка!'
+    elif data == '^':
+        value += '**'
     else:
         value+=data
     if (value != old_value and value!='') or (value != old_value and value ==''):

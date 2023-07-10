@@ -16,7 +16,7 @@ startKeyboard.add(calcBtn, weatherBtn, translateBtn, memeBtn, infoBtn)
 newKeyboard.add(backwardsBtn)
 
 keyboard = types.InlineKeyboardMarkup()
-keyboard.row(types.InlineKeyboardButton(' ', callback_data='no'),
+keyboard.row(types.InlineKeyboardButton('^', callback_data='^'),
 types.InlineKeyboardButton('C', callback_data='C'),
 types.InlineKeyboardButton('<=', callback_data='<='),
 types.InlineKeyboardButton('/', callback_data='/'))
