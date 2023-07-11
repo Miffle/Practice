@@ -1,7 +1,7 @@
-from Functions.memes.REDDIT_INFO import reddit
-from bot_components.tg_bot_register import bot
-from bot_components.keyboard.StartKeyboard import startKeyboard
 import DBase.commands_insert
+from Functions.memes.REDDIT_INFO import reddit
+from bot_components.keyboard.StartKeyboard import startKeyboard
+from bot_components.tg_bot_register import bot
 
 
 def meme_getting():
@@ -28,4 +28,3 @@ def meme_sending(message):
     else:
         bot.send_animation(message.chat.id, animation=meme["url"], caption="Мем дня", reply_markup=startKeyboard)
     DBase.commands_insert.command_inserting(message, "Какой-то мем", meme["url"])
-   
