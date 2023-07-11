@@ -1,16 +1,18 @@
 from googletrans import Translator
-from langdetect import detect
 import bot_components.reply
-
+from bot_components.keyboard.ButtonsText import backwardsBtnText
+from bot_components.tg_bot_register import bot
+from bot_components.keyboard.StartKeyboard import startKeyboard
 
 def translating(message):
     command = "Перевод"
     translator = Translator()
-    src = 'en'
-    dest = 'ru'
     text = message.text
-    translated_text = translator.translate(message.text, src=src, dest=dest).text
-    if len(message.text) < 3000:
+    translated_text = translator.translate(text=text).text
+    if message.text== backwardsBtnText:
+        bot.send_message(message.from_user.id, 'возврат к главному меню', reply_markup=startKeyboard)
+        #command="Назад"
+    elif len(message.text) < 3000:
         reply_text = f"Вот перевод: {translated_text}"
     else:
         reply_text = "Текст слишком большой, уменьши его"

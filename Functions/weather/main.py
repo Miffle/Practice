@@ -1,7 +1,9 @@
 import requests
 import bot_components.reply
 import bot_components.keyboard.StartKeyboard
-
+from bot_components.keyboard.ButtonsText import backwardsBtnText
+from bot_components.keyboard.StartKeyboard import startKeyboard
+from bot_components.tg_bot_register import bot
 
 def weather_searching(message):
     command = "Погода"
@@ -14,6 +16,9 @@ def weather_searching(message):
         temperature_feels = weather_data['main']['feels_like']
         wind = weather_data["wind"]["speed"]
         reply_text = f"В городе {message.text} {weather_type} -\nТемпература {temperature}°C\nОщущается, как {temperature_feels}°C\nВетер:{wind} м/с"
+    elif message.text== backwardsBtnText:
+        bot.send_message(message.from_user.id, 'возврат к главному меню', reply_markup=startKeyboard)
+        #command="Назад"
     else:
         reply_text = "Город не найден"
     bot_components.reply.reply(message, reply_text, command)

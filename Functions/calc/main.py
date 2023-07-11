@@ -1,12 +1,9 @@
 
 from bot_components.tg_bot_register import bot
-from bot_components.keyboard.StartKeyboard import keyboard
-
+from bot_components.keyboard.StartKeyboard import keyboard,startKeyboard
 
 value =''
 old_value=''
-
-
 def getMessage(message):
     global value
     if value == '':
@@ -18,7 +15,6 @@ def getMessage(message):
 def computing(query):
     global  value,old_value
     data = query.data
-
     if data == 'no':
         pass
     elif data == 'C':
@@ -33,6 +29,16 @@ def computing(query):
             value = 'Ошибка!'
     elif data == '^':
         value += '**'
+    elif data == 'закрыть':
+        bot.edit_message_text(chat_id=query.message.chat.id, message_id=query.message.message_id, text='Ответ:'+value)
+        value = ''
+        bot.send_message(query.message.chat.id, 'Возврат к главному меню', reply_markup=startKeyboard)
+        bot.clear_step_handler_by_chat_id(query.message.chat.id)
+        bot.edit_message_reply_markup(chat_id=query.message.chat.id, message_id=query.message.message_id, reply_markup=None)
+
+
+
+
     else:
         value+=data
     if (value != old_value and value!='') or (value != old_value and value ==''):
@@ -43,6 +49,8 @@ def computing(query):
             bot.edit_message_text(chat_id=query.message.chat.id, message_id=query.message.message_id,text=value,reply_markup=keyboard)
             old_value=value
     old_value=value
-    if value == 'Ошибка!': value = ''
+    if value == 'Ошибка!':
+        value = ''
+
 
 

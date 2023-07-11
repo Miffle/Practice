@@ -40,3 +40,5 @@ keyboard.row(types.InlineKeyboardButton(' ', callback_data='no'),
 types.InlineKeyboardButton('0', callback_data='0'),
 types.InlineKeyboardButton(',', callback_data='.'),
 types.InlineKeyboardButton('=', callback_data='='))
+
+keyboard.row(types.InlineKeyboardButton('закрыть', callback_data='закрыть'))
