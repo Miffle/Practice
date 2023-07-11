@@ -17,8 +17,7 @@ def weather_searching(message):
         wind = weather_data["wind"]["speed"]
         reply_text = f"В городе {message.text} {weather_type} -\nТемпература {temperature}°C\nОщущается, как {temperature_feels}°C\nВетер:{wind} м/с"
     elif message.text== backwardsBtnText:
-        bot.send_message(message.from_user.id, 'возврат к главному меню', reply_markup=startKeyboard)
-        #command="Назад"
+        reply_text='возврат к главному меню'
     else:
         reply_text = "Город не найден"
     bot_components.reply.reply(message, reply_text, command)

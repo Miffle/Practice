@@ -10,8 +10,7 @@ def translating(message):
     text = message.text
     translated_text = translator.translate(text=text).text
     if message.text== backwardsBtnText:
-        bot.send_message(message.from_user.id, 'возврат к главному меню', reply_markup=startKeyboard)
-        #command="Назад"
+        reply_text='возврат к главному меню'
     elif len(message.text) < 3000:
         reply_text = f"Вот перевод: {translated_text}"
     else:
