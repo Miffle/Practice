@@ -39,12 +39,12 @@
 <li><b>Создание файла INFO.py</b></li>
    Файл хранится в папке "bot_components" и содержит такой код: <br> <code>TOKEN = "Тут ваш токен"</code>
 <li><b>Создание файла REDDIT_INFO.py</b></li>
-    Файл хранится в папке "Functions/memes" и содержит такой код:
+    Файл хранится в папке "Functions/memes" и содержит такой код если у вас нет существующего аккаунта Reddit:
 <pre>import praw
 reddit = praw.Reddit(
-    user_agent="*******",
-    client_id='************',
-    client_secret='*******')
+user_agent="Hihi",
+client_id='Pi8sYLlg4Dtkb8_3sBS6Rw',
+client_secret='w5-uhDOFkujbYcWC6dpj5oQodCor6g')
 </pre>
 Чтобы получить все эти данные: <a href="https://praw.readthedocs.io/en/stable/getting_started/quick_start.html">Документация PRAW</a>
 <li><b>Создание базы данных</b></li>
