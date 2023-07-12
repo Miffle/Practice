@@ -8,7 +8,13 @@ def translating(message):
     command = "Перевод"
     translator = Translator()
     text = message.text
-    translated_text = translator.translate(text=text).text
+    language = translator.detect(text).lang
+    if language == "en":
+        dest = 'ru'
+        translated_text = translator.translate(text=text, dest=dest).text
+    else:
+        translated_text = translator.translate(text=text).text
+
     if message.text == backwardsBtnText:
         reply_text = 'возврат к главному меню'
     elif len(message.text) < 3000:
