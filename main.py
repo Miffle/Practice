@@ -10,9 +10,8 @@ from bot_components.tg_bot_register import bot
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    reply_text = "Привет я недоБОТ"
+    reply_text = "Привет я недоБОТ, там есть кнопка INFO внизу, почитай"
     bot_components.reply.reply(message, reply_text, "/start")
-    bot.reply_to(message, "INFO", reply_markup=startKeyboard)
 
 
 @bot.message_handler(content_types=['text'])
@@ -25,7 +24,7 @@ def menu(message):
         msg = bot.send_message(message.chat.id, "Введи название города", reply_markup=newKeyboard)
         bot.register_next_step_handler(msg, Functions.weather.main.weather_searching)
     elif text == translateBtnText:
-        msg = bot.send_message(message.chat.id, "Какую фразу перевести на <b>английский</b>?", parse_mode="HTML",
+        msg = bot.send_message(message.chat.id, "Какую фразу будем переводить?", parse_mode="HTML",
                                reply_markup=newKeyboard)
         bot.register_next_step_handler(msg, Functions.translation.main.translating)
     elif text == memeBtnText:
